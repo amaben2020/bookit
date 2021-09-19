@@ -1,14 +1,46 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+// import { createStore, applyMiddleware, combineReducers } from 'redux';
+// import { HYDRATE, createWrapper } from 'next-redux-wrapper';
+// import thunkMiddleware from 'redux-thunk';
+// import reducers from './redux/reducers/reducers';
+// const bindMiddleware = (middleware) => {
+//   if (process.env.NODE_ENV !== 'production') {
+//     const { composeWithDevTools } = require('redux-devtools-extension');
+//     return composeWithDevTools(applyMiddleware(...middleware));
+//   }
+
+//   return applyMiddleware(...middleware);
+// };
+
+// const reducer = (state, action) => {
+//   if (action.type === HYDRATE) {
+//     const nextState = {
+//       ...state,
+//       ...action.payload,
+//     };
+//     return nextState;
+//   } else {
+//     return reducers(state, action);
+//   }
+// };
+
+// const initStore = () => {
+//   return createStore(reducer, bindMiddleware([thunkMiddleware]));
+// };
+
+// export const wrapper = createWrapper(initStore);
+
+import { createStore, applyMiddleware } from 'redux';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import thunkMiddleware from 'redux-thunk';
 import reducers from './redux/reducers/reducers';
-const bindMiddleware = (middleware) => {
+
+const bindMiddlware = (middlware) => {
   if (process.env.NODE_ENV !== 'production') {
     const { composeWithDevTools } = require('redux-devtools-extension');
-    return composeWithDevTools(applyMiddleware(...middleware));
+    return composeWithDevTools(applyMiddleware(...middlware));
   }
 
-  return applyMiddleware(...middleware);
+  return applyMiddleware(...middlware);
 };
 
 const reducer = (state, action) => {
@@ -24,7 +56,7 @@ const reducer = (state, action) => {
 };
 
 const initStore = () => {
-  return createStore(reducer, bindMiddleware([thunkMiddleware]));
+  return createStore(reducer, bindMiddlware([thunkMiddleware]));
 };
 
 export const wrapper = createWrapper(initStore);

@@ -25,19 +25,20 @@ const UserDetails = ({ user }) => {
 
 export default UserDetails;
 
-export const getServerSideProps = async (context) => {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${context.params.id}`
-  );
+//USE THE FIRST
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch(
+//     `https://jsonplaceholder.typicode.com/users/${context.params.id}`
+//   );
 
-  const user = await res.json();
+//   const user = await res.json();
 
-  return {
-    props: {
-      user,
-    },
-  };
-};
+//   return {
+//     props: {
+//       user,
+//     },
+//   };
+// };
 
 // export const getStaticProps = async (context) => {
 //   const res = await fetch(

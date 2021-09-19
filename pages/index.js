@@ -6,7 +6,8 @@ import Home from './components/Home';
 import Link from 'next/link';
 import { getRooms } from '../redux/reducers/actions/roomActions';
 import { wrapper } from './../store';
-export default function Index({ users }) {
+import { Provider } from 'react-redux';
+export default function Index() {
   return (
     <Layout>
       <Home />
@@ -44,7 +45,8 @@ export default function Index({ users }) {
 // };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ req, store }) => {
-    await store.dispatch(getRooms(req));
-  }
+  (store) =>
+    async ({ req, res }) => {
+      await store.dispatch(getRooms(req));
+    }
 );
