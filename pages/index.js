@@ -4,11 +4,13 @@ import styles from '../styles/Home.module.css';
 import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import Link from 'next/link';
+import { getRooms } from '../redux/reducers/actions/roomActions';
+import { wrapper } from './../store';
 export default function Index({ users }) {
   return (
     <Layout>
       <Home />
-      <table id="users">
+      {/* <table id="users">
         <tr>
           <th>Name</th>
           <th>Email</th>
@@ -24,19 +26,25 @@ export default function Index({ users }) {
             </Link>
           </tr>
         ))}
-      </table>
+      </table> */}
     </Layout>
   );
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+// export const getStaticProps = async () => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users');
 
-  const users = await res.json();
+//   const users = await res.json();
 
-  return {
-    props: {
-      users,
-    },
-  };
-};
+//   return {
+//     props: {
+//       users,
+//     },
+//   };
+// };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ req, store }) => {
+    await store.dispatch(getRooms(req));
+  }
+);
