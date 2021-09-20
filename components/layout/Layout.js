@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,7 +12,7 @@ const Layout = ({ children, title = 'Book best hotels for your holiday' }) => {
         <meta charSet="utf-8" />
       </Head> */}
       <Header />
-
+      <ToastContainer position="top-center" />
       {children}
       <Footer />
     </div>

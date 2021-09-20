@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Layout from './components/layout/Layout';
-import Home from './components/Home';
+import Layout from '../components/layout/Layout';
+import Home from '../components/Home';
 import Link from 'next/link';
 import { getRooms } from '../redux/reducers/actions/roomActions';
 import { wrapper } from './../store';
